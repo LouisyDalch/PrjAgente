@@ -11,7 +11,7 @@ public class App {
         Random random = new Random();
         AgenteIA agente = new AgenteIA();
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 5; i++) {
             int index = random.nextInt(prompts.length);
             String prompt = prompts[index];
             System.out.println(i);
