@@ -12,7 +12,6 @@ public class App {
         AgenteIA agente = new AgenteIA();
 
         for (int i = 0; i < 6; i++) {
-            double conexao = Math.random();
             int index = random.nextInt(prompts.length);
             String prompt = prompts[index];
             System.out.println(i);
@@ -20,18 +19,14 @@ public class App {
             try {
                 agente.validarPrompt(prompt);
                 agente.processarPrompt(prompt);
-                agente.verificarConexao(conexao);
+                agente.chamarModeloExterno();
 
             } catch (FalhaProcessamentoAgenteException e) {
-                System.out.println("Erro: " + e.getMessage());
-                System.out.println("Timestamp do erro: " + e.getTimestamp());
+                System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage());
             } catch (PromptInadequadoException e) {
-                System.out.println("Erro: " + e.getMessage());
-                System.out.println("Palavra proibida detectada: " + e.getPalavraProibidaDetectada());
-
-            } catch (ErroComunicacaoException e) {
-                System.out.println("Erro: " + e.getMessage());
-                System.out.println("Conexão detectada: " + e.getConexao());
+                System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage() + " Palavra proibida detectada: " + e.getPalavraProibidaDetectada());
+            } catch (ErroComunicacaoIAException e) {
+                System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage());
             }
         }
 

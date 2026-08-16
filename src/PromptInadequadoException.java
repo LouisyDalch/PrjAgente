@@ -1,5 +1,10 @@
 public class PromptInadequadoException extends Exception {
     private String palavraProibidaDetectada;
+    private String timestamp;
+
+    public String getTimestamp() {
+        return timestamp;
+    }
 
     public PromptInadequadoException(String prompt, String mensagem){
         super(mensagem);
@@ -9,6 +14,7 @@ public class PromptInadequadoException extends Exception {
         }else if(prompt.contains("roubar")){
             this.palavraProibidaDetectada = "roubar";
         }
+        this.timestamp = java.time.LocalDateTime.now().toString();
     }
 
     public String getPalavraProibidaDetectada(){ 

@@ -17,9 +17,10 @@ public class AgenteIA {
         }
     }
 
-    public void verificarConexao(double conexao) throws ErroComunicacaoException {
+    public void chamarModeloExterno() throws ErroComunicacaoIAException {
+        double conexao = Math.random();
         if (conexao > 0.7) {
-            throw new ErroComunicacaoException(conexao, "A conexão é muito fraca para comunicação.");
+            throw new ErroComunicacaoIAException(conexao, "A conexão é muito fraca para comunicação.");
         }
     }
 }
