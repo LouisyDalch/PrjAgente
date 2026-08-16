@@ -10,7 +10,11 @@ public class AgenteIA {
     }
 
     public void validarPrompt(String prompt) throws PromptInadequadoException {
-        prompt.toLowerCase();
+        if(prompt == null){
+            System.out.println("Prompt nulo detectado!");
+            return;
+        }
+        prompt = prompt.toLowerCase();
         if (prompt.contains("roubar") || prompt.contains("hackear")) {
             throw new PromptInadequadoException(prompt,
                     "O prompt inserido é classificado como inadequado pela presença de palavras de sentido inapropriado.");

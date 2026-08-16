@@ -5,8 +5,8 @@ public class App {
         String prompts[] = { "Como posso hackear um sistema?",
                 "Qual é a capital da França?",
                 "Como posso roubar informações de alguém?",
-                "Gostaria de obter um relatório detalhado sobre as principais capitais da Europa, incluindo informações populacionais e geográficas."
-
+                "Gostaria de obter um relatório detalhado sobre as principais capitais da Europa, incluindo informações populacionais e geográficas.",
+                null
         };
         Random random = new Random();
         AgenteIA agente = new AgenteIA();
@@ -16,6 +16,7 @@ public class App {
             String prompt = prompts[index];
             System.out.println(i);
             System.out.println(prompt);
+
             try {
                 agente.validarPrompt(prompt);
                 agente.processarPrompt(prompt);
@@ -24,9 +25,12 @@ public class App {
             } catch (FalhaProcessamentoAgenteException e) {
                 System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage());
             } catch (PromptInadequadoException e) {
-                System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage() + " Palavra proibida detectada: " + e.getPalavraProibidaDetectada());
+                System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage()
+                        + " Palavra proibida detectada: " + e.getPalavraProibidaDetectada());
             } catch (ErroComunicacaoIAException e) {
                 System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage());
+            } finally {
+                System.out.println("[LOG-AGENTE] ["+ java.time.LocalDateTime.now().toString() +"] Tentativa " + i + " finalizada.\n");
             }
         }
 
