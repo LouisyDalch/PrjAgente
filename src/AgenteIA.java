@@ -1,4 +1,11 @@
-public class AgenteIA {
+public abstract class AgenteIA {
+    protected String nome;
+    protected String status;
+
+    public Protect(String nm,String stt){
+        this.nome = nm;
+        this.status = stt;
+    }
     public void processarPrompt(String prompt) throws FalhaProcessamentoAgenteException {
         if (prompt == null || prompt.isEmpty()) {
             throw new FalhaProcessamentoAgenteException("O prompt não pode estar vazio.");

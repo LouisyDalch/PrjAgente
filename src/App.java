@@ -9,7 +9,6 @@ public class App {
                 null
         };
         Random random = new Random();
-        AgenteIA agente = new AgenteIA();
 
         for (int i = 0; i < 5; i++) {
             int index = random.nextInt(prompts.length);
