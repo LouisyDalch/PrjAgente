@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Random;
 
 public class App {
@@ -8,30 +9,12 @@ public class App {
                 "Gostaria de obter um relatório detalhado sobre as principais capitais da Europa, incluindo informações populacionais e geográficas.",
                 null
         };
-        Random random = new Random();
-
-        for (int i = 0; i < 5; i++) {
-            int index = random.nextInt(prompts.length);
-            String prompt = prompts[index];
-            System.out.println(i);
-            System.out.println(prompt);
-
-            try {
-                agente.validarPrompt(prompt);
-                agente.processarPrompt(prompt);
-                agente.chamarModeloExterno();
-
-            } catch (FalhaProcessamentoAgenteException e) {
-                System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage());
-            } catch (PromptInadequadoException e) {
-                System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage()
-                        + " Palavra proibida detectada: " + e.getPalavraProibidaDetectada());
-            } catch (ErroComunicacaoIAException e) {
-                System.out.println("[LOG-AGENTE] [" + e.getTimestamp() + "] Erro: " + e.getMessage());
-            } finally {
-                System.out.println("[LOG-AGENTE] ["+ java.time.LocalDateTime.now().toString() +"] Tentativa " + i + " finalizada.\n");
-            }
-        }
+        List<AgenteIA> orquestrador = new ArrayList<>();
+        AgenteImagem agImg = new AgenteImagem("Gemini", null);
+        AgenteTexto agTxt = new AgenteTexto("Copilot",null);
+        
+        orquestrador.add(agImg);
+        orquestrador.add(agTxt);
 
     }
 }
