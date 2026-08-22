@@ -5,16 +5,16 @@ public class AgenteImagem extends AgenteIA {
     @Override
     public void processarRequisicao(String input)
             throws FalhaProcessamentoAgenteException, PromptInadequadoException, ErroComunicacaoIAException {
-        if(prompt == null){
+        if(input == null){
             System.out.println("Prompt nulo detectado!");
             return;
         }
-        prompt = prompt.toLowerCase();
-        if (prompt.contains("roubar") || prompt.contains("hackear")||prompt.contains("biométrico")) {
-            throw new PromptInadequadoException(prompt,
+        input = input.toLowerCase();
+        if (input.contains("roubar") || input.contains("hackear")||input.contains("biométrico")) {
+            throw new PromptInadequadoException(input,
                     "O prompt inserido é classificado como inadequado pela presença de palavras de sentido inapropriado.");
         }else{
-            System.err.println("Agente de Imagem " + Nome + " gerando resposta para: " + input);
+            System.err.println("Agente de Imagem " + nome + " gerando resposta para: " + input);
         }
     }
 }

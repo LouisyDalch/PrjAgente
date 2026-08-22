@@ -2,7 +2,7 @@ public abstract class AgenteIA {
     protected String nome;
     protected String status;
 
-    public Protect(String nm,String stt){
+    public AgenteIA(String nm,String stt){
         this.nome = nm;
         this.status = stt;
     }

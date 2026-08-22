@@ -4,14 +4,14 @@ public class AgenteTexto extends AgenteIA {
         super(nome,status);
     }
 
-    @Override @Override
+    @Override
     public void processarRequisicao(String input)
             throws FalhaProcessamentoAgenteException, PromptInadequadoException, ErroComunicacaoIAException {
             if (input.length()>500) {
                 throw new FalhaProcessamentoAgenteException("Prompt excedeu o tamanho máximo");
             }else{
                 conectarServidor();
-                System.err.println("Agente de Texto " + Nome + " gerando resposta para: " + input);
+                System.err.println("Agente de Texto " + nome + " gerando resposta para: " + input);
             }
             
     }
