@@ -20,7 +20,7 @@ public abstract class AgenteIA{
         }
     }
 
-    public void usarHabilidade(IAcaoAgente ferramenta, String comando){
+    public void usarHabilidade(IAcaoAgente ferramenta, String comando)throws Exception{
         ferramenta.processarRequisicao(comando);
     }
 
