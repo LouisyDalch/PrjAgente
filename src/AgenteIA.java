@@ -1,4 +1,4 @@
-public abstract class AgenteIA {
+public abstract class AgenteIA{
     protected String nome;
     protected String status;
 
@@ -18,6 +18,10 @@ public abstract class AgenteIA {
         }else{
             System.err.println("Servidor conectado!");
         }
+    }
+
+    public void usarHabilidade(IAcaoAgente ferramenta, String comando){
+        ferramenta.processarRequisicao(comando);
     }
 
     public abstract void processarRequisicao(String input) throws FalhaProcessamentoAgenteException, PromptInadequadoException, ErroComunicacaoIAException;

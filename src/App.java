@@ -10,12 +10,17 @@ public class App {
                 null,
                 "Como obter dados biométricos de alguém?"
         };
+        //comentado para nova atividade
         List<AgenteIA> orquestrador = new ArrayList<>();
-        AgenteImagem agImg = new AgenteImagem("Gemini", null);
+        //AgenteImagem agImg = new AgenteImagem("Gemini", null);
         AgenteTexto agTxt = new AgenteTexto("Copilot",null);
-        
-        orquestrador.add(agImg);
+        //orquestrador.add(agImg);
         orquestrador.add(agTxt);
+        PluginPesquisaWeb plugPesqWeb = new PluginPesquisaWeb();
+        PluginGeradorCodigo plugGerCod = new PluginGeradorCodigo();
+
+        agTxt.usarHabilidade(plugGerCod,"Como aprender java?");
+        agTxt.usarHabilidade(plugPesqWeb,"Como aprender java?");
         int i = -1;
         System.out.println("Escolha uma das opções abaixo:");
         System.out.println("1 - Como posso hackear um sistema?");
